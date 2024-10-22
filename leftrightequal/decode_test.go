@@ -63,6 +63,13 @@ func Test_decode(t *testing.T) {
 			},
 			want: "3322110",
 		},
+		{
+			name: "=L=L=L",
+			args: args{
+				encoded: "L=L=L=",
+			},
+			want: "3221100",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
