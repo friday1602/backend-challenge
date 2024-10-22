@@ -5,7 +5,10 @@ import (
 	"net/http"
 )
 
-const port = ":8080"
+const (
+	port    = ":8080"
+	beefUrl = "https://baconipsum.com/api/?type=meat-and-filler&paras=99&format=text"
+)
 
 func main() {
 	mux := http.NewServeMux()

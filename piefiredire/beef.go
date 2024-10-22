@@ -7,10 +7,9 @@ import (
 	"strings"
 )
 
-const beefUrl = "https://baconipsum.com/api/?type=meat-and-filler&paras=99&format=text"
-
 // beef summary gets beef article and takes out beefss
 func beefSummary(w http.ResponseWriter, r *http.Request) {
+	// get beefs from beef's url
 	resp, err := http.Get(beefUrl)
 	if err != nil {
 		WriteError(w, http.StatusInternalServerError, err)
@@ -22,6 +21,7 @@ func beefSummary(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer resp.Body.Close()
+
 	// get beef map return and response in json
 	beef := countBeef(string(body))
 	if err := WriteJson(w, http.StatusOK, map[string]map[string]int{
